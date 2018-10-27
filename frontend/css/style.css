@@ -1,7 +1,17 @@
+*{
+    font-family: 'Krub', sans-serif;
+}
 .heading{
-    background-color: darkblue;
+    background-color: #000000;
     color: white;
     padding:2vh 0;
+}
+.img{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%,0);
+    width:100%;
+    padding:20px 0;
 }
 .center{
     text-align: center;
@@ -29,6 +39,10 @@
 .modal{
     z-index: 20;
 }
+.content-container{
+    padding:15px 10px;
+}
 .modal-backdrop{
     z-index: 10;
 }​
+
