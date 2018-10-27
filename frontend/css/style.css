@@ -23,6 +23,11 @@
     height: 15px;
     margin:2px 5px;
 }
+/*.horizontal-center{*/
+    /*position: relative;*/
+    /*left: 50%;*/
+    /*transform: translate(-50%,0);*/
+/*}*/
 #map,#droneMap {
     position: static;
     height: 400px;

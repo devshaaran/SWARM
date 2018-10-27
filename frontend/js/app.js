@@ -3,10 +3,13 @@ function statuschanged(ele,s) {
     console.log(ele,s);
     droneNo=ele;
     firebase.database().ref("drones/"+ele+"/status").set(s);
+    firebase.database().ref("drones/"+ele+"/dronestatus").set(s);
     if(s===true){
         $('#exampleModalCenter').modal();
     }
 }
+
+
 
 function setDestinationLocation(){
     console.log({"lat":destLat, "lng":destLng}, droneNo);

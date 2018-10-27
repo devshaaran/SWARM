@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Swarm</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#000000">
+    <!-- Add to home screen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Swarm">
+    <link rel="apple-touch-icon" href="images/152x152.png">
+    <!-- Windows -->
+    <meta name="msapplication-TileImage" content="images/144x144.png">
+    <meta name="msapplication-TileColor" content="#000000">
+
+    <link rel="icon"
+          href="images/144x144.png">
+    <meta name="description" content="Autonomous drone">
+    <meta name="author" content="Vikrame Vasudev (Inf1n8)">
+</head>
+<body>
+<div>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">SWARM</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="drone.html">Drone</a>
+                <a class="nav-item nav-link active" href="searchMember.html">Search Member</a>
+            </div>
+        </div>
+    </nav>
+    <h2 style="padding: 3vh 10px;" class="col-md-6 offset-md-3">Seach Member</h2>
+    <p style="padding: 10px" class="col-md-6 offset-md-3">Upload image of victim</p>
+
+    <div class="input-group col-sm-12 col-md-6 mb-3 offset-md-3" style="padding:10px;">
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputGroupFile02">
+            <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
+        </div>
+        <div class="input-group-append">
+            <span class="input-group-text  badge-dark" id="inputGroupFileAddon02" onclick="uploadImage()">Upload</span>
+        </div>
+    </div>
+
+</div>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    $('input[type="file"]').change(function(e){
+        var fileName = e.target.files[0].name;
+        $('.custom-file-label').html(fileName);
+    });
+</script>
+<script>
+    function uploadImage() {
+        let imageFile = document.getElementById('inputGroupFile02');
+        let formData = new FormData();
+        console.log(imageFile);
+        formData.append('timetable', imageFile.files[0]);
+        $.ajax({
+            url: "http://127.0.0.1:5000/upload",
+            data: formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            success: function (data) {
+                alert(data);
+                window.location.reload();
+            }
+        })
+    }
+</script>
+</body>
+</html>
