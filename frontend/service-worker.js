@@ -3,6 +3,8 @@ var cacheName = 'Swarm';
 var filesToCache = [
     "./",
     "./index.html",
+    "./drone.html",
+    "./searchMember.html",
     "./js/app.js",
     "./js/bootstrap.min.js",
     "./js/jquery-3.2.1.min.js",
@@ -13,6 +15,10 @@ var filesToCache = [
     "./images/152x152.png",
     "./images/192x192.png",
     "./images/256x256.png",
+    "./images/512x512.png",
+    "./images/drone.png",
+    "./images/drone-icon.png",
+    "./images/swarm.png",
     "./images/battery.svg",
     "./images/location-arrow.svg",
     "./manifest.json"];
