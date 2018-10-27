@@ -1,0 +1,34 @@
+.heading{
+    background-color: darkblue;
+    color: white;
+    padding:2vh 0;
+}
+.center{
+    text-align: center;
+}
+.card{
+    margin:15px 0;
+}
+.image{
+    height: 15px;
+    margin:2px 5px;
+}
+#map,#droneMap {
+    position: static;
+    height: 400px;
+    width:100%;
+
+}
+.pac-container {
+    background-color: #FFF;
+    z-index: 20;
+    position: fixed;
+    display: inline-block;
+    float: left;
+}
+.modal{
+    z-index: 20;
+}
+.modal-backdrop{
+    z-index: 10;
+}​
