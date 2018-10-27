@@ -50,6 +50,9 @@
             <span class="input-group-text  badge-dark" id="inputGroupFileAddon02" onclick="uploadImage()">Upload</span>
         </div>
     </div>
+    <div id="searchResult" style="margin: 2vh 0; padding: 15px 10px;">
+        <div id="plotResponseMap" style="overflow: visible;height: 400px; "></div>
+    </div>
 
 </div>
 
@@ -62,13 +65,27 @@
     });
 </script>
 <script>
+    function loadResponse(){
+        console.log('in');
+        var droneMap = new google.maps.Map(document.getElementById('plotResponseMap'), {
+            center: {lat: 12.9901895, lng: 80.24187689999997},
+            zoom: 13,
+            mapTypeId: 'roadmap'
+        });
+        var droneMark = new google.maps.Marker({
+            position: {lat: 12.9901895, lng: 80.24187689999997},
+            map: droneMap,
+            title: 'location'
+        });
+    }
+
     function uploadImage() {
         let imageFile = document.getElementById('inputGroupFile02');
         let formData = new FormData();
         console.log(imageFile);
         formData.append('timetable', imageFile.files[0]);
         $.ajax({
-            url: "http://127.0.0.1:5000/upload",
+            url: "https://swarm-devmerge.herokuapp.com/upload",
             data: formData,
             cache: false,
             processData: false,
@@ -76,10 +93,11 @@
             type: 'POST',
             success: function (data) {
                 alert(data);
-                window.location.reload();
+                loadResponse();
             }
         })
     }
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1ElZ-m0qf-bTPaOy_0Wyf5STKD8Shex4&libraries=places"></script>
 </body>
 </html>
