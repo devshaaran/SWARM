@@ -20,15 +20,20 @@ function setDestinationLocation(){
 function showMoreInfo(det){
     $('#moreInfo').modal();
     var x =data[det];
-    var t = `<div><span><b>Battery status : </b>${x.battery}%<br></span><span><b>Destination Latitude:</b> ${x.destination.lat}<br> <b>Destination Longitude:</b>${x.destination.lng}<br></span></div><div id="droneMap"></div>`;
+    var t = `<div><span><b>Battery status : </b>${x.battery}%<br></span><span><b>Destination Latitude:</b> ${x.destination.lat}<br> <b>Destination Longitude:</b>${x.destination.lng}<br></span><span><b>Current Location Latitude:</b> ${x.currentloc.lat}<br> <b>Current Location Longitude:</b>${x.currentloc.lng}<br></span></div><a href="https://drone-footage.netlify.com/" target="_blank">View Drone Footage</a></a><div id="droneMap"></div>`;
     $('#moreInfobody').html(t);
     var droneMap = new google.maps.Map(document.getElementById('droneMap'), {
-        center: {lat: x.destination.lat, lng: x.destination.lng},
-        zoom: 13,
+        center: {lat: (x.destination.lat+x.currentloc.lat)/2, lng: (x.destination.lng+x.currentloc.lng)/2},
+        zoom: 9,
         mapTypeId: 'roadmap'
     });
     var droneMarker = new google.maps.Marker({
         position: {lat: x.destination.lat, lng: x.destination.lng},
+        map: droneMap,
+        title: x.name
+    });
+    droneMarker = new google.maps.Marker({
+        position: {lat: x.currentloc.lat, lng: x.currentloc.lng},
         map: droneMap,
         title: x.name
     });
