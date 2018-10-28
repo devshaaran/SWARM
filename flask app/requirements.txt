@@ -1,0 +1,13 @@
+Flask==0.12.2
+gunicorn==19.7.1
+itsdangerous==0.24
+Jinja2==2.9.4
+MarkupSafe==1.0
+Werkzeug==0.14.1
+requests==2.18.4
+python-firebase==1.2
+Flask-Cors==3.0.4
+Flask-Uploads==0.2.1
+Flask-PyMongo==0.5.2
+Pillow==5.0.0
+numpy==1.14.2
